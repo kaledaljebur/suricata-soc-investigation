@@ -235,7 +235,7 @@ Splunk may show a security warning because the app uses `outputlookup` to save C
 
 > Important: Only trusted users who are allowed to edit lookup files should save changes from the in-app editor.
 
-Image placeholders:
+Screenshots:
 
 ![MITRE Lookup Editor in-app editing](figures/option-1-in-app-mitre-editor.png)
 
