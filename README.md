@@ -289,9 +289,9 @@ Useful refresh URL:
 http://YOUR_SPLUNK:8000/en-US/debug/refresh
 ```
 
-Screenshot:
+<!-- Screenshot:
 
-<!-- ![Manual CSV edit example](figures/option-3-manual-csv-edit.png) -->
+![Manual CSV edit example](figures/option-3-manual-csv-edit.png) -->
 
 ---
 
@@ -332,7 +332,7 @@ This is expected when saving lookup changes from a dashboard. Only users who are
 
 > Note: The warning is Splunk's normal protection for commands that write data, such as `outputlookup`.
 
-### Changes do not appear immediately
+### If changes do not appear immediately
 
 Refresh Splunk knowledge objects:
 
@@ -349,7 +349,6 @@ or restart Splunk if required by your deployment.
 - This app does not ingest Suricata logs by itself.
 - Suricata data must already be indexed and searchable in Splunk.
 - The app is designed for Suricata IDS alert investigation.
-- Saving lookup changes from dashboards may trigger Splunk's standard risky-command warning for `outputlookup`.
 
 ---
 
@@ -364,10 +363,3 @@ kaledaljebur@gmail.com
 ```
 
 Contact me if you need a customised version of this app or a custom Splunk app for your environment.
-
----
-
-## Links
-
-- Suricata SOC Investigation on Splunkbase: https://splunkbase.splunk.com/app/8559
-- Splunk App for Lookup File Editing: https://splunkbase.splunk.com/app/1724
