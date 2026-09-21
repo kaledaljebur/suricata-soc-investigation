@@ -109,7 +109,7 @@ Screenshot:
 
 ### MITRE Lookup Editor
 
-Use this dashboard to search, add, update, and delete MITRE mappings from inside the app.
+Use this dashboard to search, add, edit, and delete MITRE mappings from inside the app. Choose the action in the Mode drop-down list.
 
 Screenshot:
 
@@ -192,6 +192,31 @@ Columns:
 signature,technique_id,technique_name,tactic,description
 ```
 
+### Full MITRE mapping file
+
+The app ships a small `suricata_mitre.csv` (about 420 signatures). A full file with about 26,800 signatures is available in this repository:
+
+```text
+suricata_mitre_full.csv
+```
+
+It is built from the free Emerging Threats (ET) Open rules, which carry MITRE ATT&CK tags. Rules that ET does not tag, such as the Nmap and inbound scan rules, are mapped to T1046 Network Service Discovery.
+
+To use it:
+
+1. Download `suricata_mitre_full.csv` from this repository.
+2. Replace the app lookup file, or upload it with the Splunk App for Lookup File Editing (see Option 2 below):
+
+```text
+$SPLUNK_HOME/etc/apps/suricata-soc-investigation/lookups/suricata_mitre.csv
+```
+
+3. Keep the file name `suricata_mitre.csv` and the header row unchanged.
+
+> 💡 Tip: The signature names must match the alert names exactly. If a signature still shows as Unknown, add it in the MITRE Lookup Editor.
+
+> ℹ️ Note: Your own local edits in `suricata_mitre.csv` are overwritten when you replace the file. Back it up first.
+
 ### App settings lookup
 
 ```text
@@ -227,9 +252,15 @@ Steps:
    MITRE ATT&CK -> MITRE Lookup Editor
    ```
 
-3. Use Filter Only mode to search existing mappings.
-4. Switch to Edit Lookup mode to add, update, or delete a mapping.
-5. Submit the change.
+3. Choose a mode in the **Mode** drop-down list:
+
+   - **Search**: type any word in Search Lookup Table to filter the rows. Leave it empty to show all rows.
+   - **Add**: enter the signature name (required). The technique, tactic, and description are optional. If the signature already exists, it is replaced.
+   - **Edit**: click a row in the table, change any value, including the signature name. The clicked row is replaced.
+   - **Delete**: click the row you want to remove.
+
+4. Click **Submit**. A result message shows what was saved or deleted.
+5. Use **Clear fields** to reset the form.
 
 Splunk may show a security warning because the app uses `outputlookup` to save CSV changes. This is expected when saving lookup changes from a dashboard.
 
