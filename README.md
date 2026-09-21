@@ -103,6 +103,8 @@ Screenshot:
 
 Use this dashboard to find Suricata signatures that are not yet mapped in the MITRE lookup.
 
+Click a row in **Top Unknown Signatures** to open the MITRE Lookup Editor in Add mode with that signature already filled in.
+
 Screenshot:
 
 ![Unknown MITRE Coverage dashboard](figures/unknown-mitre-coverage.png)
@@ -138,6 +140,18 @@ Use this dashboard to set the default search scope and time range used by the ap
 Screenshot:
 
 ![Search Scope dashboard](figures/search-scope.png)
+
+---
+
+## 🧬 CIM Support
+
+The app maps Suricata alerts to the CIM **Intrusion Detection** data model.
+
+- Fields: `src`, `dest`, `signature`, `severity`
+- Tags: `ids`, `attack`
+- The mapping applies only to data with one of these sourcetypes: `suricata`, `suricata:eve`, `suricata_eve`, `eve-json`. Set one of them on your input.
+- The sourcetype extracts JSON at search time. Do not also enable index-time JSON extraction for it.
+- The dashboards do not need CIM. They work with any sourcetype.
 
 ---
 
