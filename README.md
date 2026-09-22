@@ -159,9 +159,6 @@ Screenshot:
 <!-- ![Search Scope dashboard](figures/search-scope.png) -->
 ![Search Scope dashboard](figures/search-scope2.1.png)
 
-<!-- ![Search Scope dashboard](figures/search-scope2.1-edit.png) -->
-
-
 ---
 
 ## 🧬 CIM Support
@@ -259,42 +256,25 @@ setting,value
 
 Splunk administrators have three practical options for editing the app CSV lookups.
 
-> ✅ Recommendation: Use the in-app editor for quick MITRE mapping updates, use Splunk App for Lookup File Editing for larger CSV maintenance, and use manual file editing for packaging or scripted changes.
+> ✅ Recommendation: Use the in-app editors for quick updates, use Splunk App for Lookup File Editing for larger CSV maintenance, and use manual file editing for packaging or scripted changes.
 
-### 🛠️ Option 1: Use the In-App MITRE Lookup Editor
+### 🛠️ Option 1: Use the In-App Editors
 
-Best for quick MITRE mapping updates from inside the Suricata SOC Investigation app.
+Best for quick edits from inside the Suricata SOC Investigation app, without leaving Splunk. The app has three in-app editors, one per CSV lookup:
 
-Steps:
+- **MITRE Lookup Editor** (MITRE ATT&CK -> MITRE Lookup Editor) - search, add, edit, or delete rows in `suricata_mitre.csv`.
+- **Alert Triage** (Investigation -> Alert Triage) - set an alert's status and comment in `suricata_triage.csv`.
+- **Search Scope** (Search Scope) - set the saved search scope and time range in `suricata_settings.csv`.
 
-1. Open the app in Splunk.
-2. Go to:
-
-   ```text
-   MITRE ATT&CK -> MITRE Lookup Editor
-   ```
-
-3. Choose a mode in the **Mode** drop-down list:
-
-   - **Search**: type any word in Search Lookup Table to filter the rows. Leave it empty to show all rows.
-   - **Add**: enter the signature name (required). The technique, tactic, and description are optional. If the signature already exists, it is replaced.
-   - **Edit**: click a row in the table, change any value, including the signature name. The clicked row is replaced.
-   - **Delete**: click the row you want to remove.
-
-4. Click **Submit**. A result message shows what was saved or deleted.
-5. Use **Clear fields** to reset the form.
+Each works the same way: open the dashboard, change the fields, then click **Submit** or **Save Defaults** to write the change back to the CSV with `outputlookup`.
 
 Splunk may show a security warning because the app uses `outputlookup` to save CSV changes. This is expected when saving lookup changes from a dashboard.
 
-> 📌 Important: Only trusted users who are allowed to edit lookup files should save changes from the in-app editor.
+> 📌 Important: Only trusted users who are allowed to edit lookup files should save changes from the in-app editors.
 
-Screenshots:
+Screenshot (Search Scope dashboard, as an example):
 
-![MITRE Lookup Editor in-app editing](figures/option-1-in-app-mitre-editor.png)
-
-![Required permissions for in-app CSV editing](figures/option-1-in-app-edit-permissions.png)
-
-![Splunk outputlookup warning](figures/outputlookup-warning.png)
+![Search Scope dashboard, in-app editing example](figures/search-scope2.1-edit.png)
 
 ### 🧩 Option 2: Use Splunk App for Lookup File Editing
 
